@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "Enforce-Guardrails-Kubernetes",
+  "assignment": {
+    "name": "GR-Kubernetes",
+    "displayName": "Enforce recommended guardrails for Kubernetes",
+    "description": "This policy initiative is a group of policies that ensures Kubernetes is compliant per regulated Landing Zones."
+  },
+  "definitionEntry": {
+    "displayName": "Enforce recommended guardrails for Kubernetes",
+    "policySetName": "Enforce-Guardrails-Kubernetes"
+  },
+  "enforcementMode": "Default",
+  "parameters": {},
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones",
+      "/providers/Microsoft.Management/managementGroups/mg-epac-platform"
+    ]
+  }
+}

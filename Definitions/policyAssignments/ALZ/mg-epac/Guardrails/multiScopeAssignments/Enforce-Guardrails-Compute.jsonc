@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "Enforce-Guardrails-Compute",
+  "assignment": {
+    "name": "GR-Compute",
+    "displayName": "Enforce recommended guardrails for Compute",
+    "description": "This policy initiative is a group of policies that ensures Compute is compliant per regulated Landing Zones."
+  },
+  "definitionEntry": {
+    "displayName": "Enforce recommended guardrails for Compute",
+    "policySetName": "Enforce-Guardrails-Compute"
+  },
+  "enforcementMode": "Default",
+  "parameters": {},
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones",
+      "/providers/Microsoft.Management/managementGroups/mg-epac-platform"
+    ]
+  }
+}

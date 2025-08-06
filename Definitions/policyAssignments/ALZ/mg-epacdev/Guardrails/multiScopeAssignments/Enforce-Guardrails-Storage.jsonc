@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "Enforce-Guardrails-Storage",
+  "assignment": {
+    "name": "GR-Storage",
+    "displayName": "Enforce recommended guardrails for Storage Account",
+    "description": "This policy initiative is a group of policies that ensures Storage is compliant per regulated Landing Zones."
+  },
+  "definitionEntry": {
+    "displayName": "Enforce recommended guardrails for Storage Account",
+    "policySetName": "Enforce-Guardrails-Storage"
+  },
+  "enforcementMode": "Default",
+  "parameters": {},
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-landingzones",
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-platform"
+    ]
+  }
+}

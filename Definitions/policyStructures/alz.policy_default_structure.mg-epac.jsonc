@@ -1,8 +1,8 @@
 {
   "managementGroupNameMappings": {
-    "mg-epacdev": {
+    "alz": {
       "value": "/providers/Microsoft.Management/managementGroups/mg-epac",
-      "management_group_function": "EPAC - Canary"
+      "management_group_function": "EPAC - Production"
     },
     "platform": {
       "value": "/providers/Microsoft.Management/managementGroups/mg-epac-platform",

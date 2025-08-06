@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "Enforce-Guardrails-MachineLearning",
+  "assignment": {
+    "name": "GR-MachineLearning",
+    "displayName": "Enforce recommended guardrails for Machine Learning",
+    "description": "This policy initiative is a group of policies that ensures Machine Learning is compliant per regulated Landing Zones."
+  },
+  "definitionEntry": {
+    "displayName": "Enforce recommended guardrails for Machine Learning",
+    "policySetName": "Enforce-Guardrails-MachineLearning"
+  },
+  "enforcementMode": "Default",
+  "parameters": {},
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-landingzones",
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-platform"
+    ]
+  }
+}

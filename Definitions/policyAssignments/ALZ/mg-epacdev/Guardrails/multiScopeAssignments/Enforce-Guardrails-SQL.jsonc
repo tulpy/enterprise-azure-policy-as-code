@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "Enforce-Guardrails-SQL",
+  "assignment": {
+    "name": "GR-SQL",
+    "displayName": "Enforce recommended guardrails for SQL and SQL Managed Instance",
+    "description": "This policy initiative is a group of policies that ensures SQL and SQL Managed Instance is compliant per regulated Landing Zones."
+  },
+  "definitionEntry": {
+    "displayName": "Enforce recommended guardrails for SQL and SQL Managed Instance",
+    "policySetName": "Enforce-Guardrails-SQL"
+  },
+  "enforcementMode": "Default",
+  "parameters": {},
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-landingzones",
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-platform"
+    ]
+  }
+}
