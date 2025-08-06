@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "identity/Deny-MgmtPorts-Internet",
+  "assignment": {
+    "name": "Deny-MgmtPorts-Internet",
+    "displayName": "Management port access from the Internet should be blocked",
+    "description": "This policy denies any network security rule that allows management port access from the Internet"
+  },
+  "definitionEntry": {
+    "displayName": "Management port access from the Internet should be blocked",
+    "policyName": "Deny-MgmtPorts-From-Internet"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {},
+  "nonComplianceMessages": [
+    {
+      "message": "Management port access from the Internet must be blocked."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-platform-identity"
+    ]
+  }
+}

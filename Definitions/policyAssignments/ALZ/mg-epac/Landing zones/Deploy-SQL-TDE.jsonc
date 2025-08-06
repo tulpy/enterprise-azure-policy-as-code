@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "landing_zones/Deploy-SQL-TDE",
+  "assignment": {
+    "name": "Deploy-SQL-TDE",
+    "displayName": "Deploy TDE on SQL servers",
+    "description": "This policy ensures that Transparent Data Encryption is enabled on SQL Servers."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy TDE on SQL servers",
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f"
+  },
+  "definitionVersion": "2.*.*",
+  "enforcementMode": "Default",
+  "parameters": {},
+  "nonComplianceMessages": [
+    {
+      "message": "TDE must be deployed on SQL servers."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

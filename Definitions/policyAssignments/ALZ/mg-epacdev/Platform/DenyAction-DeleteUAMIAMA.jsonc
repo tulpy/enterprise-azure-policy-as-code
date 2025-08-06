@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "platform/DenyAction-DeleteUAMIAMA",
+  "assignment": {
+    "name": "DenyAction-DeleteUAMIAMA",
+    "displayName": "Do not allow deletion of the User Assigned Managed Identity used by AMA",
+    "description": "This policy provides a safeguard against accidental removal of the User Assigned Managed Identity used by AMA by blocking delete calls using deny action effect."
+  },
+  "definitionEntry": {
+    "displayName": "Do not allow deletion of the User Assigned Managed Identity used by AMA",
+    "policyName": "DenyAction-DeleteResources"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "effect": "DenyAction",
+    "resourceName": "uai-aue-plat-mgmt-ama",
+    "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+  },
+  "nonComplianceMessages": null,
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-platform"
+    ]
+  }
+}

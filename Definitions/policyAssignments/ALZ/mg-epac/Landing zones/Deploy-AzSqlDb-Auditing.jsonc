@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "landing_zones/Deploy-AzSqlDb-Auditing",
+  "assignment": {
+    "name": "Deploy-AzSqlDb-Auditing",
+    "displayName": "Configure SQL servers to have auditing enabled to Log Analytics workspace",
+    "description": "To ensure the operations performed against your SQL assets are captured, SQL servers should have auditing enabled. If auditing is not enabled, this policy will configure auditing events to flow to the specified Log Analytics workspace."
+  },
+  "definitionEntry": {
+    "displayName": "Configure SQL servers to have auditing enabled to Log Analytics workspace",
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/25da7dfb-0666-4a15-a8f5-402127efd8bb"
+  },
+  "definitionVersion": "1.*.*",
+  "enforcementMode": "Default",
+  "parameters": {
+    "logAnalyticsWorkspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder/providers/Microsoft.OperationalInsights/workspaces/placeholder-la",
+    "logAnalytics": "/subscriptions/a50d2a27-93d9-43b1-957c-2a663ffaf37f/resourceGroups/arg-aue-plat-mgmt-logging/providers/Microsoft.OperationalInsights/workspaces/law-aue-plat-mgmt-3gucev5z3p7a4"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "SQL servers must have auditing enabled to Log Analytics workspace."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "landing_zones/Deploy-vmHybr-Monitoring",
+  "assignment": {
+    "name": "Deploy-vmHybr-Monitoring",
+    "displayName": "Enable Azure Monitor for Hybrid Virtual Machines",
+    "description": "Enable Azure Monitor for Hybrid Virtual Machines in the specified scope (Management group, Subscription or resource group)."
+  },
+  "definitionEntry": {
+    "displayName": "Enable Azure Monitor for Hybrid Virtual Machines",
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/2b00397d-c309-49c4-aa5a-f0b2c5bc6321"
+  },
+  "definitionVersion": "1.*.*",
+  "enforcementMode": "Default",
+  "parameters": {
+    "dcrResourceId": "/subscriptions/a50d2a27-93d9-43b1-957c-2a663ffaf37f/resourceGroups/arg-aue-plat-mgmt-logging/providers/Microsoft.Insights/dataCollectionRules/dcr-aue-plat-mgmt-vminsights",
+    "enableProcessesAndDependencies": true
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Azure Monitor must be enabled for Hybrid Virtual Machines."
+    }
+  ],
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-landingzones"
+    ]
+  }
+}

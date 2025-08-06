@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "landing_zones/Audit-AppGW-WAF",
+  "assignment": {
+    "name": "Audit-AppGW-WAF",
+    "displayName": "Web Application Firewall (WAF) should be enabled for Application Gateway",
+    "description": "Assign the WAF should be enabled for Application Gateway audit policy."
+  },
+  "definitionEntry": {
+    "displayName": "Web Application Firewall (WAF) should be enabled for Application Gateway",
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/564feb30-bf6a-4854-b4bb-0d2d2d1e6c66"
+  },
+  "definitionVersion": "2.*.*",
+  "enforcementMode": "Default",
+  "parameters": {
+    "effect": "Audit"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Web Application Firewall (WAF) must be enabled for Application Gateway."
+    }
+  ],
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-landingzones"
+    ]
+  }
+}

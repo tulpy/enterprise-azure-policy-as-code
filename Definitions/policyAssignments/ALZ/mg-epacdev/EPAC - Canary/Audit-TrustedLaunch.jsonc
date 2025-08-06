@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "root/Audit-TrustedLaunch",
+  "assignment": {
+    "name": "Audit-TrustedLaunch",
+    "displayName": "Audit virtual machines for Trusted Launch support",
+    "description": "Trusted Launch improves security of a Virtual Machine which requires VM SKU, OS Disk & OS Image to support it (Gen 2). To learn more about Trusted Launch, visit https://aka.ms/trustedlaunch."
+  },
+  "definitionEntry": {
+    "displayName": "Audit virtual machines for Trusted Launch support",
+    "policySetName": "Audit-TrustedLaunch"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "effect": "Audit"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Trusted Launch must be used on supported virtual machines for enhanced security."
+    }
+  ],
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev"
+    ]
+  }
+}

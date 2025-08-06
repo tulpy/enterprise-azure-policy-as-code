@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "root/Audit-UnusedResources",
+  "assignment": {
+    "name": "Audit-UnusedResources",
+    "displayName": "Unused resources driving cost should be avoided",
+    "description": "This Policy initiative is a group of Policy definitions that help optimize cost by detecting unused but chargeable resources. Leverage this Policy initiative as a cost control to reveal orphaned resources that are driving cost."
+  },
+  "definitionEntry": {
+    "displayName": "Unused resources driving cost should be avoided",
+    "policySetName": "Audit-UnusedResourcesCostOptimization"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "EffectDisks": "Audit",
+    "EffectPublicIpAddresses": "Audit",
+    "EffectServerFarms": "Audit"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Unused resources driving cost must be avoided."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "root/Enforce-ACSB",
+  "assignment": {
+    "name": "Enforce-ACSB",
+    "displayName": "Enforce Azure Compute Security Baseline compliance auditing",
+    "description": "This initiative assignment enables Azure Compute Security Baseline compliance auditing for Windows and Linux virtual machines."
+  },
+  "definitionEntry": {
+    "displayName": "Enforce Azure Compute Security Baseline compliance auditing",
+    "policySetName": "Enforce-ACSB"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {},
+  "nonComplianceMessages": [
+    {
+      "message": "Azure Compute Security Baseline compliance auditing must be enforced."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac"
+    ]
+  }
+}

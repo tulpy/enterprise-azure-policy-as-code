@@ -1,0 +1,527 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-set-definition-schema.json",
+  "name": "Enforce-Guardrails-Network",
+  "properties": {
+    "description": "This policy initiative is a group of policies that ensures Network and Networking services are compliant per regulated Landing Zones.",
+    "displayName": "Enforce recommended guardrails for Network and Networking services",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Network",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.2.0"
+    },
+    "parameters": {
+      "afwEmptyIDPSBypassList": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "afwEnableAllIDPSSignatureRules": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "afwEnableIDPS": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "afwEnableTlsInspection": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "afwEnbaleTlsForAllAppRules": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "appGwTlsVersion": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "appGwWaf": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "ddosPlanResourceId": {
+        "defaultValue": "",
+        "type": "string"
+      },
+      "denyMgmtFromInternet": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "denyMgmtFromInternetPorts": {
+        "defaultValue": [
+          "22",
+          "3389"
+        ],
+        "metadata": {
+          "description": "Ports to be blocked",
+          "displayName": "Ports"
+        },
+        "type": "Array"
+      },
+      "modifyNsg": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Disabled",
+        "type": "string"
+      },
+      "modifyNsgRuleAccess": {
+        "allowedValues": [
+          "Allow",
+          "Deny"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "modifyNsgRuleDescription": {
+        "defaultValue": "Deny any outbound traffic to the Internet",
+        "type": "string"
+      },
+      "modifyNsgRuleDestinationAddressPrefix": {
+        "defaultValue": "Internet",
+        "type": "string"
+      },
+      "modifyNsgRuleDestinationPortRange": {
+        "defaultValue": "*",
+        "type": "string"
+      },
+      "modifyNsgRuleDirection": {
+        "defaultValue": "Outbound",
+        "type": "string"
+      },
+      "modifyNsgRuleName": {
+        "defaultValue": "DenyAnyInternetOutbound",
+        "type": "string"
+      },
+      "modifyNsgRulePriority": {
+        "defaultValue": 1000,
+        "type": "integer"
+      },
+      "modifyNsgRuleProtocol": {
+        "defaultValue": "*",
+        "type": "string"
+      },
+      "modifyNsgRuleSourceAddressPrefix": {
+        "defaultValue": "*",
+        "type": "string"
+      },
+      "modifyNsgRuleSourcePortRange": {
+        "defaultValue": "*",
+        "type": "string"
+      },
+      "modifyUdr": {
+        "defaultValue": "Disabled",
+        "type": "string"
+      },
+      "modifyUdrAddressPrefix": {
+        "defaultValue": "0.0.0.0/0",
+        "type": "string"
+      },
+      "modifyUdrNextHopIpAddress": {
+        "defaultValue": "",
+        "type": "string"
+      },
+      "modifyUdrNextHopType": {
+        "defaultValue": "None",
+        "type": "string"
+      },
+      "subnetNsg": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "subnetServiceEndpoint": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "subnetUdr": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "vnetModifyDdos": {
+        "allowedValues": [
+          "Audit",
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      },
+      "vpnAzureAD": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "wafAfdEnabled": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "wafFwRules": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "wafMode": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "wafModeAppGw": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "wafModeAppGwRequirement": {
+        "defaultValue": "Prevention",
+        "type": "string"
+      },
+      "wafModeRequirement": {
+        "defaultValue": "Prevention",
+        "type": "string"
+      }
+    },
+    "policyType": "Custom",
+    "policyDefinitionGroups": null,
+    "policyDefinitions": [
+      {
+        "parameters": {},
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Nsg-GW-subnet",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/35f9c03a-cc27-418e-9c0c-539ff999d010"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('vpnAzureAD')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-VPN-AzureAD",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/21a6bc25-125e-4d13-b82d-2e19b7208ab7"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('wafAfdEnabled')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Waf-Afd-Enabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/055aa869-bc98-4af8-bafc-23f1ab6ffe2c"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('afwEnableIDPS')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Waf-IDPS",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6484db87-a62d-4327-9f07-80a2cbdf333a"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('afwEnableAllIDPSSignatureRules')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-FW-AllIDPSS",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/610b6183-5f00-4d68-86d2-4ab4cb3a67a5"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('afwEmptyIDPSBypassList')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-FW-EmpIDPSBypass",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f516dc7a-4543-4d40-aad6-98f76a706b50"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('afwEnableTlsInspection')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-FW-TLS-Inspection",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/711c24bb-7f18-4578-b192-81a6161e1f17"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('afwEnbaleTlsForAllAppRules')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-FW-TLS-AllApp",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a58ac66d-92cb-409c-94b8-8e48d7a96596"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('wafModeAppGw')]"
+          },
+          "modeRequirement": {
+            "value": "[parameters('wafModeAppGwRequirement')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Waf-AppGw-mode",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/12430be1-6cc8-4527-a9a8-e3d38f250096"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('wafFwRules')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Waf-Fw-rules",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/632d3993-e2c0-44ea-a7db-2eca131f356d"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('wafMode')]"
+          },
+          "modeRequirement": {
+            "value": "[parameters('wafModeRequirement')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Waf-mode",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/425bea59-a659-4cbb-8d31-34499bd030b8"
+      },
+      {
+        "parameters": {
+          "ddosPlan": {
+            "value": "[parameters('ddosPlanResourceId')]"
+          },
+          "effect": {
+            "value": "[parameters('vnetModifyDdos')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Modify-vNet-DDoS",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d"
+      },
+      {
+        "parameters": {},
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Ip-Forwarding",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/88c0b9da-ce96-4b03-9635-f29a937e2900"
+      },
+      {
+        "parameters": {},
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-vNic-Pip",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/83a86a26-fd1f-447c-b59d-e51f44264114"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('appGwWaf')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-AppGw-Without-Waf",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/564feb30-bf6a-4854-b4bb-0d2d2d1e6c66"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('subnetUdr')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Subnet-Without-Udr",
+        "policyDefinitionName": "Deny-Subnet-Without-Udr"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('subnetNsg')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Subnet-Without-NSG",
+        "policyDefinitionName": "Deny-Subnet-Without-Nsg"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('subnetServiceEndpoint')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Subnet-with-Service-Endpoints",
+        "policyDefinitionName": "Deny-Service-Endpoints"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('denyMgmtFromInternet')]"
+          },
+          "ports": {
+            "value": "[parameters('denyMgmtFromInternetPorts')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-Mgmt-From-Internet",
+        "policyDefinitionName": "Deny-MgmtPorts-From-Internet"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('appGwTlsVersion')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Deny-AppGw-Without-Tls",
+        "policyDefinitionName": "Deny-AppGw-Without-Tls"
+      },
+      {
+        "parameters": {
+          "addressPrefix": {
+            "value": "[parameters('modifyUdrAddressPrefix')]"
+          },
+          "effect": {
+            "value": "[parameters('modifyUdr')]"
+          },
+          "nextHopIpAddress": {
+            "value": "[parameters('modifyUdrNextHopIpAddress')]"
+          },
+          "nextHopType": {
+            "value": "[parameters('modifyUdrNextHopType')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Modify-Udr",
+        "policyDefinitionName": "Modify-UDR"
+      },
+      {
+        "parameters": {
+          "effect": {
+            "value": "[parameters('modifyNsg')]"
+          },
+          "nsgRuleAccess": {
+            "value": "[parameters('modifyNsgRuleAccess')]"
+          },
+          "nsgRuleDescription": {
+            "value": "[parameters('modifyNsgRuleDescription')]"
+          },
+          "nsgRuleDestinationAddressPrefix": {
+            "value": "[parameters('modifyNsgRuleDestinationAddressPrefix')]"
+          },
+          "nsgRuleDestinationPortRange": {
+            "value": "[parameters('modifyNsgRuleDestinationPortRange')]"
+          },
+          "nsgRuleDirection": {
+            "value": "[parameters('modifyNsgRuleDirection')]"
+          },
+          "nsgRuleName": {
+            "value": "[parameters('modifyNsgRuleName')]"
+          },
+          "nsgRulePriority": {
+            "value": "[parameters('modifyNsgRulePriority')]"
+          },
+          "nsgRuleProtocol": {
+            "value": "[parameters('modifyNsgRuleProtocol')]"
+          },
+          "nsgRuleSourceAddressPrefix": {
+            "value": "[parameters('modifyNsgRuleSourceAddressPrefix')]"
+          },
+          "nsgRuleSourcePortRange": {
+            "value": "[parameters('modifyNsgRuleSourcePortRange')]"
+          }
+        },
+        "groupNames": [],
+        "policyDefinitionReferenceId": "Modify-Nsg",
+        "policyDefinitionName": "Modify-NSG"
+      }
+    ]
+  }
+}

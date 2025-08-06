@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "root/Deploy-ASC-Monitoring",
+  "assignment": {
+    "name": "Deploy-ASC-Monitoring",
+    "displayName": "Microsoft Cloud Security Benchmark",
+    "description": "Microsoft Cloud Security Benchmark policy initiative."
+  },
+  "definitionEntry": {
+    "displayName": "Microsoft Cloud Security Benchmark",
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
+  },
+  "definitionVersion": "57.*.*",
+  "enforcementMode": "Default",
+  "parameters": {},
+  "nonComplianceMessages": [
+    {
+      "message": "Microsoft Cloud Security Benchmark must be met."
+    }
+  ],
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev"
+    ]
+  }
+}

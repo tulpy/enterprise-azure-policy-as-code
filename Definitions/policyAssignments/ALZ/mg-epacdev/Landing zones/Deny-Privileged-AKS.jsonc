@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "landing_zones/Deny-Privileged-AKS",
+  "assignment": {
+    "name": "Deny-Privileged-AKS",
+    "displayName": "Kubernetes cluster should not allow privileged containers",
+    "description": "Do not allow privileged containers creation in a Kubernetes cluster. This recommendation is part of CIS 5.2.1 which is intended to improve the security of your Kubernetes environments. This policy is generally available for Kubernetes Service (AKS), and preview for AKS Engine and Azure Arc enabled Kubernetes. For more information, see https://aka.ms/kubepolicydoc."
+  },
+  "definitionEntry": {
+    "displayName": "Kubernetes cluster should not allow privileged containers",
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/95edb821-ddaf-4404-9732-666045e056b4"
+  },
+  "definitionVersion": "9.*.*",
+  "enforcementMode": "Default",
+  "parameters": {
+    "effect": "deny"
+  },
+  "nonComplianceMessages": null,
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-landingzones"
+    ]
+  }
+}

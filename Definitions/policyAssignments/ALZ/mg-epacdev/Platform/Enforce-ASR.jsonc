@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "platform/Enforce-ASR",
+  "assignment": {
+    "name": "Enforce-ASR",
+    "displayName": "Enforce enhanced recovery and backup policies",
+    "description": "This initiative assignment enables recommended ALZ guardrails for Azure Recovery Services."
+  },
+  "definitionEntry": {
+    "displayName": "Enforce enhanced recovery and backup policies",
+    "policySetName": "Enforce-Backup"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {},
+  "nonComplianceMessages": [
+    {
+      "message": "Recommended guardrails must be enforced for Azure Recovery Services (Backup and Site Recovery)."
+    }
+  ],
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-platform"
+    ]
+  }
+}

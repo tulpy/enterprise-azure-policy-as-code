@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "landing_zones/Enable-DDoS-VNET",
+  "assignment": {
+    "name": "Enable-DDoS-VNET",
+    "displayName": "Virtual networks should be protected by Azure DDoS Network Protection",
+    "description": "Protect your virtual networks against volumetric and protocol attacks with Azure DDoS Network Protection. For more information, visit https://aka.ms/ddosprotectiondocs."
+  },
+  "definitionEntry": {
+    "displayName": "Virtual networks should be protected by Azure DDoS Network Protection",
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d"
+  },
+  "definitionVersion": "1.*.*",
+  "enforcementMode": "Default",
+  "parameters": {
+    "ddosPlan": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/ddosProtectionPlans/placeholder",
+    "effect": "Modify"
+  },
+  "nonComplianceMessages": null,
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

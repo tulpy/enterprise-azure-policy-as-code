@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "landing_zones/Deploy-vmArc-ChangeTrack",
+  "assignment": {
+    "name": "Deploy-vmArc-ChangeTrack",
+    "displayName": "Enable ChangeTracking and Inventory for Arc-enabled virtual machines",
+    "description": "Enable ChangeTracking and Inventory for Arc-enabled virtual machines. Takes Data Collection Rule ID as parameter and asks for an option to input applicable locations."
+  },
+  "definitionEntry": {
+    "displayName": "Enable ChangeTracking and Inventory for Arc-enabled virtual machines",
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/53448c70-089b-4f52-8f38-89196d7f2de1"
+  },
+  "definitionVersion": "1.*.*-preview",
+  "enforcementMode": "Default",
+  "parameters": {
+    "dcrResourceId": "/subscriptions/a50d2a27-93d9-43b1-957c-2a663ffaf37f/resourceGroups/arg-aue-plat-mgmt-logging/providers/Microsoft.Insights/dataCollectionRules/dcr-aue-plat-mgmt-changetracking",
+    "effect": "DeployIfNotExists"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Change Tracking must be enabled for Arc-enabled Virtual Machines."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

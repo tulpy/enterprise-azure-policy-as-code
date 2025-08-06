@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "identity/Deny-Public-IP",
+  "assignment": {
+    "name": "Deny-Public-IP",
+    "displayName": "Deny the creation of public IP",
+    "description": "This policy denies creation of Public IPs under the assigned scope."
+  },
+  "definitionEntry": {
+    "displayName": "Deny the creation of public IP",
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/6c112d4e-5bc7-47ae-a041-ea2d9dccd749"
+  },
+  "definitionVersion": "2.*.*",
+  "enforcementMode": "Default",
+  "parameters": {
+    "listOfResourceTypesNotAllowed": [
+      "Microsoft.Network/publicIPAddresses"
+    ],
+    "effect": "Deny"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Public IPs must not be created under this scope."
+    }
+  ],
+  "scope": {
+    "mg-epacdev": [
+      "/providers/Microsoft.Management/managementGroups/mg-epacdev-platform-identity"
+    ]
+  }
+}

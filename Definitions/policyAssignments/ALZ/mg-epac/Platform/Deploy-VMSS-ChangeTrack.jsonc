@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "platform/Deploy-VMSS-ChangeTrack",
+  "assignment": {
+    "name": "Deploy-VMSS-ChangeTrack",
+    "displayName": "Enable ChangeTracking and Inventory for virtual machine scale sets",
+    "description": "Enable ChangeTracking and Inventory for virtual machine scale sets. Takes Data Collection Rule ID as parameter and asks for an option to input applicable locations and user-assigned identity for Azure Monitor Agent."
+  },
+  "definitionEntry": {
+    "displayName": "Enable ChangeTracking and Inventory for virtual machine scale sets",
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/c4a70814-96be-461c-889f-2b27429120dc"
+  },
+  "definitionVersion": "1.*.*-preview",
+  "enforcementMode": "Default",
+  "parameters": {
+    "dcrResourceId": "/subscriptions/a50d2a27-93d9-43b1-957c-2a663ffaf37f/resourceGroups/arg-aue-plat-mgmt-logging/providers/Microsoft.Insights/dataCollectionRules/dcr-aue-plat-mgmt-changetracking",
+    "bringYourOwnUserAssignedManagedIdentity": true,
+    "restrictBringYourOwnUserAssignedIdentityToSubscription": false,
+    "userAssignedIdentityResourceId": "/subscriptions/a50d2a27-93d9-43b1-957c-2a663ffaf37f/resourcegroups/arg-aue-plat-mgmt-logging/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai-aue-plat-mgmt-ama",
+    "effect": "DeployIfNotExists"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Change Tracking must be enabled for Virtual Machines Scales Sets."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-platform"
+    ]
+  }
+}
