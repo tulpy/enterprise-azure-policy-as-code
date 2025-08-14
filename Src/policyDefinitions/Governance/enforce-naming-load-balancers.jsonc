@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "Enforce-Naming-Load-Balancers",
+  "properties": {
+    "displayName": "Enforce Naming for Load Balancers",
+    "description": "This policy enforces naming for Load Balancers",
+    "mode": "All",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": true
+    },
+    "parameters": {
+      "namingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Resources."
+        },
+        "type": "string"
+      },
+      "namingPrefix1": {
+        "metadata": {
+          "description": "The naming prefix for Azure Resources."
+        },
+        "type": "string"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/loadBalancers"
+          },
+          {
+            "field": "name",
+            "notLike": "[parameters('namingPrefix')]"
+          },
+          {
+            "field": "name",
+            "notLike": "[parameters('namingPrefix1')]"
+          },
+          {
+            "field": "name",
+            "notLike": "kubernetes-*"
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    }
+  }
+}

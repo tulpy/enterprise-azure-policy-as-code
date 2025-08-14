@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-exemption-schema.json",
+  "exemptions": [
+    {
+      "name": "policy-exemption-Audit-Zone-Resiliency-001",
+      "displayName": "mg-epac - Audit Zone Resiliency",
+      "description": "Policy Exemption for Audit Zone Resiliency.",
+      "exemptionCategory": "Mitigated",
+      "expiresOn": null,
+      "scope": "/providers/Microsoft.Management/managementGroups/mg-epac",
+      "policyAssignmentId": "/providers/microsoft.management/managementgroups/mg-epac/providers/microsoft.authorization/policyassignments/Audit-ZoneResiliency",
+      "policyDefinitionReferenceIds": [
+        "Microsoft.ContainerRegistry/registries_ZoneRedundant" // Used for Bicep modules only
+      ],
+      "resourceSelectors": [],
+      "metadata": {
+        "epacMetadata": {}
+      },
+      "assignmentScopeValidation": "Default"
+    }
+  ]
+}

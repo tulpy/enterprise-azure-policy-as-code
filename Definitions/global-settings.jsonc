@@ -1,32 +1,20 @@
 {
-    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/global-settings-schema.json",
-    "pacOwnerId": "bd715eb8-36d2-4d33-8db0-505e04c0e4aa",
-    "pacEnvironments": [
-        {
-            "pacSelector": "mg-epacdev",
-            "cloud": "AzureCloud",
-            "tenantId": "a2ebc691-c318-4ec2-998a-a87c528378e0",
-            "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/mg-epacdev",
-            "desiredState": { // [optional]
-                "strategy": "ownedOnly", // default full
-                "keepDfcSecurityAssignments": true, // default false
-                "doNotDisableDeprecatedPolicies": false
-            },
-            "globalNotScopes": [],
-            "managedIdentityLocation": "australiaeast"
-        },
-        {
-            "pacSelector": "mg-epac",
-            "cloud": "AzureCloud",
-            "tenantId": "a2ebc691-c318-4ec2-998a-a87c528378e0",
-            "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/mg-epac",
-            "desiredState": { // [optional]
-                "strategy": "full", // default full
-                "keepDfcSecurityAssignments": true, // default false // default full
-                "doNotDisableDeprecatedPolicies": false
-            },
-            "globalNotScopes": [],
-            "managedIdentityLocation": "australiaeast"
-        }
-    ]
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/global-settings-schema.json",
+  "pacOwnerId": "bd715eb8-36d2-4d33-8db0-505e04c0e4aa",
+  "pacEnvironments": [
+    {
+      "pacSelector": "mg-epac",
+      "cloud": "AzureCloud",
+      "tenantId": "a2ebc691-c318-4ec2-998a-a87c528378e0",
+      "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/mg-epac",
+      "desiredState": {
+        // [optional]
+        "strategy": "full", // default full
+        "keepDfcSecurityAssignments": true, // default false // default full
+        "doNotDisableDeprecatedPolicies": false
+      },
+      "globalNotScopes": [],
+      "managedIdentityLocation": "australiaeast"
+    }
+  ]
 }

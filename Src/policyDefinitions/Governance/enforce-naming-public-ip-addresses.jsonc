@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "Enforce-Naming-Public-IP-Addresses",
+  "properties": {
+    "displayName": "Enforce Naming for Public IP Addresses",
+    "description": "This policy enforces naming for Public IP Addresses",
+    "mode": "All",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": true
+    },
+    "parameters": {
+      "namingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Resources."
+        },
+        "type": "string"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/publicIPAddresses"
+          },
+          {
+            "field": "name",
+            "notLike": "[parameters('namingPrefix')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    }
+  }
+}

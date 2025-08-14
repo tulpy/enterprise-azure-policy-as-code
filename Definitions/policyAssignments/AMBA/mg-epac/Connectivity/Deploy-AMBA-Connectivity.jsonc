@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "amba_connectivity/Deploy-AMBA-Connectivity",
+  "assignment": {
+    "name": "Deploy-AMBA-Connectivity",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Connectivity",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Network components such as Azure Firewalls, ExpressRoute, VPN, and Private DNS Zones."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Connectivity",
+    "policySetName": "Alerting-Connectivity"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "AFWSNATPortUtilizationPolicyEffect": "deployIfNotExists",
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "tst",
+      "dev",
+      "sbx"
+    ],
+    "ALZMonitorResourceGroupLocation": "australiaeast",
+    "ALZMonitorResourceGroupName": "alertsRG",
+    "ALZMonitorResourceGroupTags": {
+      "_deployed_by_alz_monitor": true
+    },
+    "ERCIRArpAvailabilityPolicyEffect": "deployIfNotExists",
+    "ERCIRBgpAvailabilityPolicyEffect": "deployIfNotExists",
+    "ERCIRQoSDropBitsinPerSecPolicyEffect": "deployIfNotExists",
+    "ERCIRQoSDropBitsoutPerSecPolicyEffect": "deployIfNotExists",
+    "ERGwExpressRouteBitsInPolicyEffect": "disabled",
+    "ERGwExpressRouteBitsOutPolicyEffect": "disabled",
+    "ERGwExpressRouteCpuUtilPolicyEffect": "deployIfNotExists",
+    "ERPBitsInPerSecondPolicyEffect": "deployIfNotExists",
+    "ERPBitsOutPerSecondPolicyEffect": "deployIfNotExists",
+    "ERPLineProtocolPolicyEffect": "deployIfNotExists",
+    "ERPRxLightLevelHighPolicyEffect": "deployIfNotExists",
+    "ERPRxLightLevelLowPolicyEffect": "deployIfNotExists",
+    "ERPTxLightLevelHighPolicyEffect": "deployIfNotExists",
+    "ERPTxLightLevelLowPolicyEffect": "deployIfNotExists",
+    "FirewallHealthPolicyEffect": "deployIfNotExists",
+    "LBDatapathAvailabilityPolicyEffect": "deployIfNotExists",
+    "LBGlobalBackendAvailabilityPolicyEffect": "deployIfNotExists",
+    "LBHealthProbeStatusPolicyEffect": "deployIfNotExists",
+    "LBUsedSNATPortsPolicyEffect": "deployIfNotExists",
+    "PDNSZCapacityUtilPolicyEffect": "deployIfNotExists",
+    "PDNSZQueryVolumePolicyEffect": "disabled",
+    "PDNSZRecordSetCapacityPolicyEffect": "deployIfNotExists",
+    "PDNSZRegistrationCapacityUtilPolicyEffect": "deployIfNotExists",
+    "PIPBytesInDDoSPolicyEffect": "disabled",
+    "PIPDDoSAttackPolicyEffect": "deployIfNotExists",
+    "PIPPacketsInDDoSPolicyEffect": "disabled",
+    "PIPVIPAvailabilityPolicyEffect": "deployIfNotExists",
+    "VNETDDOSAttackPolicyEffect": "deployIfNotExists",
+    "VPNGWBandWidthUtilPolicyEffect": "deployIfNotExists",
+    "VPNGWEgressPolicyEffect": "disabled",
+    "VPNGWIngressPolicyEffect": "disabled",
+    "VPNGWTunnelEgressPacketDropCountPolicyEffect": "deployIfNotExists",
+    "VPNGWTunnelEgressPacketDropMismatchPolicyEffect": "deployIfNotExists",
+    "VPNGWTunnelIngressPacketDropCountPolicyEffect": "deployIfNotExists",
+    "VPNGWTunnelIngressPacketDropMismatchPolicyEffect": "deployIfNotExists",
+    "VPNGwBGPPeerStatusPolicyEffect": "deployIfNotExists",
+    "VnetGwERCpuUtilPolicyEffect": "deployIfNotExists",
+    "VnetGwExpressRouteBitsPerSecondPolicyEffect": "deployIfNotExists",
+    "VnetGwTunnelBWPolicyEffect": "deployIfNotExists",
+    "VnetGwTunnelEgressPacketDropCountPolicyEffect": "deployIfNotExists",
+    "VnetGwTunnelEgressPacketDropMismatchPolicyEffect": "deployIfNotExists",
+    "VnetGwTunnelEgressPolicyEffect": "disabled",
+    "VnetGwTunnelIngressPacketDropCountPolicyEffect": "deployIfNotExists",
+    "VnetGwTunnelIngressPacketDropMismatchPolicyEffect": "deployIfNotExists",
+    "VnetGwTunnelIngressPolicyEffect": "disabled",
+    "activityFWDeletePolicyEffect": "deployIfNotExists",
+    "activityNSGDeletePolicyEffect": "deployIfNotExists",
+    "activityUDRDeletePolicyEffect": "deployIfNotExists",
+    "activityUDRRoutesDeletePolicyEffect": "deployIfNotExists",
+    "activityUDRUpdatePolicyEffect": "deployIfNotExists",
+    "activityVPNGWDeletePolicyEffect": "deployIfNotExists"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Alerting must be deployed to Azure services."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-platform-connectivity"
+    ]
+  }
+}

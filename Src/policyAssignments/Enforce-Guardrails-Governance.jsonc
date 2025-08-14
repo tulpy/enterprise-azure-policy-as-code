@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "assignment": {
+    "name": "Enforce-GR-Governance",
+    "displayName": "Enforce Azure Governance Guardrails",
+    "description": "Enforce Azure Governance Guardrails for Tagging, Hybrid Use Benefits and other governance constructs."
+  },
+  "definitionEntry": {
+    "displayName": "Enforce recommended guardrails for Azure Governance",
+    "policySetName": "Enforce-GR-Governance"
+  },
+  "definitionVersion": "1.*.*",
+  "enforcementMode": "Default",
+  "parameters": {
+    "applicationNameTag": "applicationName",
+    "purchaseOrderTag": "purchaseOrder",
+    "dataClassificationTag": "dataClassification",
+    "ownerTag": "owner",
+    "environmentTag": "environment",
+    "contactEmailTag": "contactEmail",
+    "criticalityTag": "criticality"
+  },
+  "resourceSelectors": [
+    {
+      "selectors": [
+        {
+          "kind": "resourceType",
+          "notIn": [
+            "microsoft.insights/activityLogAlerts",
+            "microsoft.alertsManagement/actionRules",
+            "microsoft.security/automations",
+            "microsoft.visualstudio/account"
+          ]
+        }
+      ],
+      "name": "resourceSelectors-ExcludeTags"
+    }
+  ],
+  "scope": {
+    "mg-epac": ["/providers/Microsoft.Management/managementGroups/mg-epac"]
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-set-definition-schema.json",
+  "name": "Deny-Resource-Delete",
+  "properties": {
+    "description": "This policy initiative denies resource deletion for identified Azure Resources.",
+    "displayName": "Deny Azure Resource Deletion for specific Azure Resources",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": "true"
+    },
+    "parameters": {
+      "environmentTagValue": {
+        "metadata": {
+          "description": "The environment tag value."
+        },
+        "type": "string"
+      },
+      "effect": {
+        "allowedValues": ["DenyAction", "Disabled"],
+        "defaultValue": "DenyAction",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "string"
+      }
+    },
+    "policyType": "Custom",
+    "policyDefinitionGroups": [],
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "automationAccounts",
+        "policyDefinitionName": "Deny-Delete-Automation-Accounts",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "azureBastion",
+        "policyDefinitionName": "Deny-Delete-Azure-Bastion",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "azureFirewall",
+        "policyDefinitionName": "Deny-Delete-Azure-Firewall",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "connections",
+        "policyDefinitionName": "Deny-Delete-Connections",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "eventhubNamespace",
+        "policyDefinitionName": "Deny-Delete-EventHub-Namespace",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "expressRouteCircuit",
+        "policyDefinitionName": "Deny-Delete-ExpressRoute-Circuits",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "expressRouteGateway",
+        "policyDefinitionName": "Deny-Delete-ExpressRoute-Gateways",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "keyVault",
+        "policyDefinitionName": "Deny-Delete-Key-Vaults",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "loadBalancer",
+        "policyDefinitionName": "Deny-Delete-Load-Balancers",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "localNetworkGateway",
+        "policyDefinitionName": "Deny-Delete-Local-Network-Gateways",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "networkSecurityGroup",
+        "policyDefinitionName": "Deny-Delete-Network-Security-Groups",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "networkWatchers",
+        "policyDefinitionName": "Deny-Delete-Network-Watchers",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "publicIpAddresses",
+        "policyDefinitionName": "Deny-Delete-Public-IP-Addresses",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "recoveryServicesVault",
+        "policyDefinitionName": "Deny-Delete-Recovery-Services-Vaults",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "routeTables",
+        "policyDefinitionName": "Deny-Delete-Route-Tables",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "storageAccounts",
+        "policyDefinitionName": "Deny-Delete-Storage-Accounts",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "userAssignedIdentity",
+        "policyDefinitionName": "Deny-Delete-User-Assigned-Identity",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "virtualNetworkGateway",
+        "policyDefinitionName": "Deny-Delete-Virtual-Network-Gateways",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "virtualNetworks",
+        "policyDefinitionName": "Deny-Delete-Virtual-Networks",
+        "parameters": {
+          "environmentTagValue": {
+            "value": "[parameters('environmentTagValue')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        }
+      }
+    ]
+  }
+}

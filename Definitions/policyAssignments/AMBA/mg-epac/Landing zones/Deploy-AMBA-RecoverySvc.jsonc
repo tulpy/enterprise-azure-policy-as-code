@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "amba_landing_zones/Deploy-AMBA-RecoverySvc",
+  "assignment": {
+    "name": "Deploy-AMBA-RecoverySvc",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Recovery Services",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Recovery Services such as Azure Backup, and Azure Site Recovery."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Recovery Services",
+    "policySetName": "Alerting-RecoveryServices"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "Test",
+      "Dev",
+      "Sandbox"
+    ],
+    "RVASRHealthMonitorPolicyEffect": "modify",
+    "RVBackupHealthMonitorPolicyEffect": "modify"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Alerting must be deployed to Azure services."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

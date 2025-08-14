@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "assignment": {
+    "name": "Deny-Resource-Locations",
+    "displayName": "Limit allowed locations for Resources",
+    "description": "Specifies the allowed locations (regions) where Resources can be deployed."
+  },
+  "definitionEntry": {
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+    "displayName": "Allowed locations"
+  },
+  "definitionVersion": "1.*.*",
+  "parameters": {
+    "listOfAllowedLocations": ["australiaeast", "global"]
+  },
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac"
+    ]
+  }
+}

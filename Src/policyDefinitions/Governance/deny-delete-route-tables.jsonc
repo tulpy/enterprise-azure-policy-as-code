@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "Deny-Delete-Route-Tables",
+  "properties": {
+    "displayName": "Deny resource deletion for Route Tables",
+    "description": "This policy denies resource deletion for Route Tables.",
+    "mode": "Indexed",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": true
+    },
+    "parameters": {
+      "environmentTagValue": {
+        "metadata": {
+          "description": "The environment tag value."
+        },
+        "type": "String"
+      },
+      "effect": {
+        "allowedValues": ["DenyAction", "Disabled"],
+        "defaultValue": "DenyAction",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "string"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/routeTables"
+          },
+          {
+            "field": "tags.environment",
+            "equals": "[parameters('environmentTagValue')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "actionNames": [
+            "delete"
+          ],
+          "cascadeBehaviors": {
+            "resourceGroup": "deny"
+          }
+        }
+      }
+    }
+  }
+}

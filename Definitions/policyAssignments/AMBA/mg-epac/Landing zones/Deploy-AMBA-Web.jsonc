@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "amba_landing_zones/Deploy-AMBA-Web",
+  "assignment": {
+    "name": "Deploy-AMBA-Web",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Web",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Web Services such as App Services."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Web",
+    "policySetName": "Alerting-Web"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "ALZManagementSubscriptionId": "",
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "Test",
+      "Dev",
+      "Sandbox"
+    ],
+    "ALZMonitorResourceGroupLocation": "eastus",
+    "ALZMonitorResourceGroupName": "rg-amba-alz-prod-001",
+    "ALZMonitorResourceGroupTags": {
+      "_deployed_by_alz_monitor": true
+    },
+    "ALZUserAssignedManagedIdentityName": "id-amba-alz-arg-reader-prod-001",
+    "AppInsightsThrottlingLimitPolicyEffect": "deployIfNotExists",
+    "AppInsightsThrottlingLimitcheckWorkspaceAlertsStorageConfigured": "false",
+    "BYOUserAssignedManagedIdentityResourceId": "",
+    "LAWDailyCapLimitPolicyEffect": "deployIfNotExists",
+    "WSFCPUPercentagePolicyEffect": "deployIfNotExists",
+    "WSFDiskQueueLengthPolicyEffect": "deployIfNotExists",
+    "WSFHttpQueueLengthPolicyEffect": "deployIfNotExists",
+    "WSFMemoryPercentagePolicyEffect": "deployIfNotExists",
+    "activityAppInsightsDeletePolicyEffect": "deployIfNotExists",
+    "activityLAWDeletePolicyEffect": "deployIfNotExists",
+    "activityLAWKeyRegenPolicyEffect": "deployIfNotExists"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Alerting must be deployed to Azure services."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

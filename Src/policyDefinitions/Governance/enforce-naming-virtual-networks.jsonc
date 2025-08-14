@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "Enforce-Naming-Virtual-Networks",
+  "properties": {
+    "displayName": "Enforce Naming for Virtual Networks",
+    "description": "This policy enforces naming for Virtual Networks",
+    "mode": "All",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": true
+    },
+    "parameters": {
+      "namingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Resources."
+        },
+        "type": "string"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/virtualNetworks"
+          },
+          {
+            "field": "name",
+            "notLike": "[parameters('namingPrefix')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    }
+  }
+}

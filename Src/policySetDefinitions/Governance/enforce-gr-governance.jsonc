@@ -1,0 +1,219 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-set-definition-schema.json",
+  "name": "Enforce-GR-Governance",
+  "properties": {
+    "description": "Azure Governance Baseline for Tagging, Hybrid Use Benefits and other governance constructs.",
+    "displayName": "Enforce recommended guardrails for Azure Governance",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": "true"
+    },
+    "parameters": {
+      "environmentTag": {
+        "metadata": {
+          "description": "The environment Tag."
+        },
+        "type": "String"
+      },
+      "applicationNameTag": {
+        "metadata": {
+          "description": "The AppSydId Tag."
+        },
+        "type": "String"
+      },
+      "contactEmailTag": {
+        "metadata": {
+          "description": "The contactEmail Tag."
+        },
+        "type": "String"
+      },
+      "purchaseOrderTag": {
+        "metadata": {
+          "description": "The purchaseOrder Tag."
+        },
+        "type": "String"
+      },
+      "criticalityTag": {
+        "metadata": {
+          "description": "The criticality Tag."
+        },
+        "type": "String"
+      },
+      "dataClassificationTag": {
+        "metadata": {
+          "description": "The dataClassification Tag."
+        },
+        "type": "String"
+      },
+      "ownerTag": {
+        "metadata": {
+          "description": "The owner Tag."
+        },
+        "type": "String"
+      }
+    },
+    "policyType": "Custom",
+    "policyDefinitionGroups": [],
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "addAppNameTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/726aca4c-86e9-4b04-b0c5-073027359532",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('applicationNameTag')]"
+          },
+          "tagValue": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "addClassificationTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/726aca4c-86e9-4b04-b0c5-073027359532",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('dataClassificationTag')]"
+          },
+          "tagValue": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "addContactEmailTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/726aca4c-86e9-4b04-b0c5-073027359532",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('contactEmailTag')]"
+          },
+          "tagValue": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "addCostTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/726aca4c-86e9-4b04-b0c5-073027359532",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('purchaseOrderTag')]"
+          },
+          "tagValue": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "addCriticalityTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/726aca4c-86e9-4b04-b0c5-073027359532",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('criticalityTag')]"
+          },
+          "tagValue": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "addEnvTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/726aca4c-86e9-4b04-b0c5-073027359532",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('environmentTag')]"
+          },
+          "tagValue": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "addOwnerTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/726aca4c-86e9-4b04-b0c5-073027359532",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('ownerTag')]"
+          },
+          "tagValue": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "appendAzureHub",
+        "policyDefinitionName": "Append-AzureHub",
+        "parameters": {}
+      },
+      {
+        "policyDefinitionReferenceId": "appendCreatedDate",
+        "policyDefinitionName": "Append-CreatedDate-Tag",
+        "parameters": {}
+      },
+      {
+        "policyDefinitionReferenceId": "inheritAppNameTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9ea02ca2-71db-412d-8b00-7c7ca9fcd32d",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('applicationNameTag')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "inheritClassificationTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9ea02ca2-71db-412d-8b00-7c7ca9fcd32d",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('dataClassificationTag')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "inheritContactEmailTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9ea02ca2-71db-412d-8b00-7c7ca9fcd32d",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('contactEmailTag')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "inheritCostTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9ea02ca2-71db-412d-8b00-7c7ca9fcd32d",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('purchaseOrderTag')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "inheritCriticalityTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9ea02ca2-71db-412d-8b00-7c7ca9fcd32d",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('criticalityTag')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "inheritEnvTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/40df99da-1232-49b1-a39a-6da8d878f469",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('environmentTag')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "inheritOwnerTag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9ea02ca2-71db-412d-8b00-7c7ca9fcd32d",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('ownerTag')]"
+          }
+        }
+      }
+    ]
+  }
+}

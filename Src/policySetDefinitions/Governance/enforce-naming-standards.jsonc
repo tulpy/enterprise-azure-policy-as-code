@@ -1,0 +1,269 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-set-definition-schema.json",
+  "name": "Enforce-Naming-Standards",
+  "properties": {
+    "description": "This policy initiative is a group of policies that enforce naming of key Azure Resources.",
+    "displayName": "Enforce Azure Naming Standards",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": "true"
+    },
+    "parameters": {
+      "AppGwyNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Application Gateways."
+        },
+        "type": "String"
+      },
+      "AutomationNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Automation Accounts."
+        },
+        "type": "String"
+      },
+      "BastionNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Bastion Hosts."
+        },
+        "type": "String"
+      },
+      "ExpressRouteCircuitNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Express Route Circuits."
+        },
+        "type": "String"
+      },
+      "KeyVaultNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Key Vaults."
+        },
+        "type": "String"
+      },
+      "InternalLoadBalancerNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Internal Load Balancers."
+        },
+        "type": "String"
+      },
+      "ExternalLoadBalancerNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure External Load Balancers."
+        },
+        "type": "String"
+      },
+      "LocalNetworkGatewayNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Local Network Gateways."
+        },
+        "type": "String"
+      },
+      "LogAnalyticsWorkspaceNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Log Analytics Workspaces."
+        },
+        "type": "String"
+      },
+      "ManagementGroupNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Management Groups."
+        },
+        "type": "String"
+      },
+      "NetworkSecurityGroupNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Network Security Groups."
+        },
+        "type": "String"
+      },
+      "PublicIpNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Public IP Addresses."
+        },
+        "type": "String"
+      },
+      "RouteTableNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Route Tables."
+        },
+        "type": "String"
+      },
+      "StorageAccountNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Storage Accounts."
+        },
+        "type": "String"
+      },
+      "SubscriptionNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Subscriptions."
+        },
+        "type": "String"
+      },
+      "VirtualNetworkGwyNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Virtual Network Gateways."
+        },
+        "type": "String"
+      },
+      "VirtualNetworkNamingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Virtual Networks."
+        },
+        "type": "String"
+      }
+    },
+    "policyType": "Custom",
+    "policyDefinitionGroups": [],
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "EnforceNamingAppGwy",
+        "policyDefinitionName": "Enforce-Naming-Application-Gateways",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('AppGwyNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingAutomation",
+        "policyDefinitionName": "Enforce-Naming-Automation-Accounts",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('AutomationNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingBastion",
+        "policyDefinitionName": "Enforce-Naming-Azure-Bastion",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('BastionNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingExpressRouteCircuit",
+        "policyDefinitionName": "Enforce-Naming-ExpressRoute-Circuits",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('ExpressRouteCircuitNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingKeyVault",
+        "policyDefinitionName": "Enforce-Naming-Key-Vaults",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('KeyVaultNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingLoadBalancers",
+        "policyDefinitionName": "Enforce-Naming-Load-Balancers",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('InternalLoadBalancerNamingPrefix')]"
+          },
+          "namingPrefix1": {
+            "value": "[parameters('ExternalLoadBalancerNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingLocalNetworkGateway",
+        "policyDefinitionName": "Enforce-Naming-Local-Network-Gateways",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('LocalNetworkGatewayNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingLogAnalyticsWorkspaces",
+        "policyDefinitionName": "Enforce-Naming-Log-Analytics-Workspaces",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('LogAnalyticsWorkspaceNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingManagementGroups",
+        "policyDefinitionName": "Enforce-Naming-Management-Groups",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('ManagementGroupNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingNetworkSecurityGroup",
+        "policyDefinitionName": "Enforce-Naming-Network-Security-Groups",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('NetworkSecurityGroupNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingPublicIP",
+        "policyDefinitionName": "Enforce-Naming-Public-IP-Addresses",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('PublicIpNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingRouteTables",
+        "policyDefinitionName": "Enforce-Naming-Route-Tables",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('RouteTableNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingStorageAccounts",
+        "policyDefinitionName": "Enforce-Naming-Storage-Accounts",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('StorageAccountNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingSubscription",
+        "policyDefinitionName": "Enforce-Naming-Azure-Subscriptions",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('SubscriptionNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingVirtualNetworkGateways",
+        "policyDefinitionName": "Enforce-Naming-Virtual-Network-Gateways",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('VirtualNetworkGwyNamingPrefix')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "EnforceNamingVirtualNetworks",
+        "policyDefinitionName": "Enforce-Naming-Virtual-Networks",
+        "parameters": {
+          "namingPrefix": {
+            "value": "[parameters('VirtualNetworkNamingPrefix')]"
+          }
+        }
+      }
+    ]
+  }
+}

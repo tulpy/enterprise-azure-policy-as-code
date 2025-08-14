@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "amba_root/Deploy-AMBA-Notification",
+  "assignment": {
+    "name": "Deploy-AMBA-Notification",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Notification Assets",
+    "description": "This initiative deploys Notification Assets for Azure Monitor Baseline Alerts (AMBA-ALZ). This includes the setup of an Alert Processing Rule and an Action Group to manage notifications and actions, along with a Notification Suppression Rule to manage alert notifications, as well as a Notification Suppression Rule to control alert notifications."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Notification Assets",
+    "policySetName": "Notification-Assets"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "ALZArmRoleId": [],
+    "ALZEventHubResourceId": [],
+    "ALZFunctionResourceId": "",
+    "ALZFunctionTriggerUrl": "",
+    "ALZLogicappCallbackUrl": "",
+    "ALZLogicappResourceId": "",
+    "ALZMonitorActionGroupEmail": [
+      "test@test.com"
+    ],
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "tst",
+      "dev",
+      "sbx"
+    ],
+    "ALZMonitorResourceGroupLocation": "australiaeast",
+    "ALZMonitorResourceGroupName": "alertsRG",
+    "ALZMonitorResourceGroupTags": {
+      "_deployed_by_alz_monitor": true
+    },
+    "ALZNotificationAssetSuffix": "-001",
+    "ALZWebhookServiceUri": [],
+    "BYOActionGroup": [],
+    "BYOAlertProcessingRule": ""
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Notification Assets must be deployed to Azure services."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac"
+    ]
+  }
+}

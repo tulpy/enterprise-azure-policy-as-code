@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "Enforce-Subscription-Tag",
+  "properties": {
+    "displayName": "Require a tag on an Azure Subscription",
+    "description": "Enforces existence of a tag on an Azure Subscription.",
+    "mode": "All",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": true
+    },
+    "parameters": {
+      "tagName": {
+        "metadata": {
+          "description": "Name of the tag, such as 'environment'",
+          "displayName": "Tag Name"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "exists": "false"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

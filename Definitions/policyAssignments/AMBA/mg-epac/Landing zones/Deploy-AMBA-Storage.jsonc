@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "amba_landing_zones/Deploy-AMBA-Storage",
+  "assignment": {
+    "name": "Deploy-AMBA-Storage",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Storage",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Storage Services such as Storage accounts."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Storage",
+    "policySetName": "Alerting-Storage"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "tst",
+      "dev",
+      "sbx"
+    ],
+    "ALZMonitorResourceGroupLocation": "australiaeast",
+    "ALZMonitorResourceGroupName": "alertsRG",
+    "ALZMonitorResourceGroupTags": {
+      "_deployed_by_alz_monitor": true
+    },
+    "StorageAccountAvailabilityPolicyEffect": "deployIfNotExists",
+    "StorageAccountDeletePolicyEffect": "deployIfNotExists"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Alerting must be deployed to Azure services."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "amba_landing_zones/Deploy-AMBA-KeyMgmt",
+  "assignment": {
+    "name": "Deploy-AMBA-KeyMgmt",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Key Management",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Key Management Services such as Azure Key Vault, and Managed HSM."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Key Management",
+    "policySetName": "Alerting-KeyManagement"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "tst",
+      "dev",
+      "sbx"
+    ],
+    "ALZMonitorResourceGroupLocation": "australiaeast",
+    "ALZMonitorResourceGroupName": "alertsRG",
+    "ALZMonitorResourceGroupTags": {
+      "_deployed_by_alz_monitor": true
+    },
+    "HSMsAvailabilityPolicyEffect": "disabled",
+    "HSMsLatencyAvailabilityPolicyEffect": "disabled",
+    "KVCapacityPolicyEffect": "disabled",
+    "KVRequestPolicyEffect": "disabled",
+    "KvAvailabilityPolicyEffect": "disabled",
+    "KvLatencyAvailabilityPolicyEffect": "disabled",
+    "activityHSMsDeletePolicyEffect": "deployIfNotExists",
+    "activityKVDeletePolicyEffect": "deployIfNotExists"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Alerting must be deployed to Azure services."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

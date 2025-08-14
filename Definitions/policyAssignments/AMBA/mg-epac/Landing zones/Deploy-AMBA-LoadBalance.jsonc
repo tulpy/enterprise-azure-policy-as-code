@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "amba_landing_zones/Deploy-AMBA-LoadBalance",
+  "assignment": {
+    "name": "Deploy-AMBA-LoadBalance",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Load Balancing",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Load Balancing Services such as Load Balancer, Application Gateway, Traffic Manager, and Azure Front Door."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Load Balancing",
+    "policySetName": "Alerting-LoadBalancing"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "AGWApplicationGatewayTotalTimePolicyEffect": "deployIfNotExists",
+    "AGWBackendLastByteResponseTimePolicyEffect": "deployIfNotExists",
+    "AGWCPUUtilPolicyEffect": "deployIfNotExists",
+    "AGWCapacityUnitsPolicyEffect": "deployIfNotExists",
+    "AGWComputeUnitsPolicyEffect": "deployIfNotExists",
+    "AGWFailedRequestsPolicyEffect": "deployIfNotExists",
+    "AGWResponseStatusPolicyEffect": "deployIfNotExists",
+    "AGWUnhealthyHostCountPolicyEffect": "deployIfNotExists",
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "Test",
+      "Dev",
+      "Sandbox"
+    ],
+    "CDNPOriginHealthPercentagePolicyEffect": "deployIfNotExists",
+    "CDNPOriginLatencyPolicyEffect": "disabled",
+    "CDNPPercentage4XXPolicyEffect": "deployIfNotExists",
+    "CDNPPercentage5XXPolicyEffect": "deployIfNotExists",
+    "FDBackendHealthPolicyEffect": "deployIfNotExists",
+    "FDBackendRequestLatencyPolicyEffect": "deployIfNotExists",
+    "LBDatapathAvailabilityPolicyEffect": "deployIfNotExists",
+    "LBGlobalBackendAvailabilityPolicyEffect": "deployIfNotExists",
+    "LBHealthProbeStatusPolicyEffect": "deployIfNotExists",
+    "LBUsedSNATPortsPolicyEffect": "deployIfNotExists",
+    "PIPBytesInDDoSPolicyEffect": "disabled",
+    "PIPDDoSAttackPolicyEffect": "deployIfNotExists",
+    "PIPPacketsInDDoSPolicyEffect": "disabled",
+    "PIPVIPAvailabilityPolicyEffect": "deployIfNotExists",
+    "TMEndpointHealthPolicyEffect": "deployIfNotExists",
+    "VNETDDOSAttackPolicyEffect": "deployIfNotExists"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Alerting must be deployed to Azure services."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-landingzones"
+    ]
+  }
+}

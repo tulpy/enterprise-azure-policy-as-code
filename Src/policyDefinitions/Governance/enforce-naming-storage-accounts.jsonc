@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "Enforce-Naming-Storage-Accounts",
+  "properties": {
+    "displayName": "Enforce Naming for Storage Accounts",
+    "description": "This policy enforces naming for Storage Accounts",
+    "mode": "All",
+    "metadata": {
+      "category": "Governance",
+      "version": "1.0.0",
+      "source": "https://github.com/Insight-Services-APAC/azure-landing-zones-bicep/",
+      "_deployed_by_insight": true
+    },
+    "parameters": {
+      "namingPrefix": {
+        "metadata": {
+          "description": "The naming prefix for Azure Resources."
+        },
+        "type": "string"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "name",
+            "notLike": "[parameters('namingPrefix')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    }
+  }
+}

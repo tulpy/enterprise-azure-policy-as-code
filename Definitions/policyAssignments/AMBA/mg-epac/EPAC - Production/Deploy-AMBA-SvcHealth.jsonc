@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "amba_root/Deploy-AMBA-SvcHealth",
+  "assignment": {
+    "name": "Deploy-AMBA-SvcHealth",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Service Health",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Service Health Events such as Service issues, Planned maintenance, Health advisories, Security advisories, and Resource health."
+  },
+  "definitionEntry": {
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Service Health",
+    "policySetName": "Alerting-ServiceHealth"
+  },
+  "definitionVersion": null,
+  "enforcementMode": "Default",
+  "parameters": {
+    "ALZArmRoleId": [],
+    "ALZEventHubResourceId": [],
+    "ALZFunctionResourceId": "",
+    "ALZFunctionTriggerUrl": "",
+    "ALZLogicappCallbackUrl": "",
+    "ALZLogicappResourceId": "",
+    "ALZMonitorActionGroupEmail": [
+      "test@test.com"
+    ],
+    "ALZMonitorDisableTagName": "MonitorDisable",
+    "ALZMonitorDisableTagValues": [
+      "true",
+      "tst",
+      "dev",
+      "sbx"
+    ],
+    "ALZMonitorResourceGroupLocation": "australiaeast",
+    "ALZMonitorResourceGroupName": "alertsRG",
+    "ALZMonitorResourceGroupTags": {
+      "_deployed_by_alz_monitor": true
+    },
+    "ALZWebhookServiceUri": [],
+    "BYOActionGroup": [],
+    "BYOAlertProcessingRule": "",
+    "ResHlthUnhealthyPolicyEffect": "deployIfNotExists",
+    "serviceHealthAdvisoryPolicyEffect": "deployIfNotExists",
+    "serviceHealthIncidentPolicyEffect": "deployIfNotExists",
+    "serviceHealthMaintenancePolicyEffect": "deployIfNotExists",
+    "serviceHealthSecurityPolicyEffect": "deployIfNotExists"
+  },
+  "nonComplianceMessages": [
+    {
+      "message": "Alerting must be deployed to Azure services."
+    }
+  ],
+  "scope": {
+    "mg-epac": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac"
+    ]
+  }
+}
