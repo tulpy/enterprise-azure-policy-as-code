@@ -8,13 +8,13 @@
       "tenantId": "a2ebc691-c318-4ec2-998a-a87c528378e0",
       "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/mg-epac",
       "desiredState": {
-        // [optional]
-        "strategy": "full", // default full
-        "keepDfcSecurityAssignments": true, // default false // default full
+        "strategy": "full",
+        "keepDfcSecurityAssignments": true,
         "doNotDisableDeprecatedPolicies": false
       },
       "globalNotScopes": [],
-      "managedIdentityLocation": "australiaeast"
+      "managedIdentityLocation": "australiaeast",
+      "deployedBy": "Azure Policy as Code"
     }
   ]
 }
