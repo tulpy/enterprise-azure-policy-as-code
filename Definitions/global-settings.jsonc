@@ -9,7 +9,7 @@
       "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/mg-epac",
       "desiredState": {
         "strategy": "full",
-        "keepDfcSecurityAssignments": true,
+        "keepDfcSecurityAssignments": false,
         "doNotDisableDeprecatedPolicies": false
       },
       "globalNotScopes": [],
