@@ -1,6 +1,5 @@
 # Enterprise Azure Policy as Code
 
-- Go through the repo structure
 - Open the global settings file
 - Run Build - no changes
 - Update location - Australia East
